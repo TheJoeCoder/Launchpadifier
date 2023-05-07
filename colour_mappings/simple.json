@@ -1,0 +1,8 @@
+{
+    "$schema": "https://files.rb9.xyz/schemas/colourmapping.schema.json",
+    "name": "simple",
+    "values": [
+        {"col": [0, 0, 0], "vel": 0},
+        {"col": [255, 255, 255], "vel": 127}
+    ]
+}

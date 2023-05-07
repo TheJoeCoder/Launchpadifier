@@ -1,0 +1,64 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://files.rb9.xyz/schemas/midimapping.schema.json",
+    "title": "Grid to MIDI Mapping",
+    "description": "Mapping for grid values in space to lighty-uppy square devices",
+    "type": "object",
+    "properties": {
+        "grid": {
+            "description": "The X and Y heights of the pixel grid",
+            "type": "array",
+            "items": {
+                "type": "integer"
+            },
+            "minItems": 2,
+            "maxItems": 2
+        },
+        "devices": {
+            "description": "The devices used",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "description": "Description",
+                        "type": "string"
+                    },
+                    "channel": {
+                        "description": "The MIDI channel to write output to (0-15)",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 15
+                    },
+                    "colour_mapping": {
+                        "description": "The ID of the velocity to colour mapping to use for lights",
+                        "type": "string"
+                    }
+                },
+                "required": ["channel", "colour_mapping"]
+            }
+        },
+        "pixels": {
+            "description": "List of pixels and data. Ordered from top left across.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "device": {
+                        "description": "Device id (pos in array) for device",
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "note": {
+                        "description": "MIDI Note number",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 127
+                    }
+                },
+                "required": ["device", "note"]
+            }
+        }
+    },
+    "required": ["grid", "devices", "pixels"]
+}

@@ -1,0 +1,41 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://files.rb9.xyz/schemas/colourmapping.schema.json",
+    "title": "Colour to MIDI Mapping",
+    "description": "Mapping for rgb colours to velocity values on lighty-uppy square devices",
+    "type": "object",
+    "properties": {
+        "name": {
+            "description": "The ID of the mapping set",
+            "type": "string"
+        },
+        "values": {
+            "description": "List of values mapping colours to MIDI velocity",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "col": {
+                        "description": "RGB values of colour",
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 255
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                    },
+                    "vel": {
+                        "description": "Velocity mapping of colour",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 127
+                    }
+                },
+                "required": ["col", "vel"]
+            }
+        }
+    },
+    "required": ["name", "values"]
+}
